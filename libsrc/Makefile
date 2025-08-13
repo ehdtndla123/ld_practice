@@ -13,8 +13,12 @@ LIB_DIR = $(PROJECT_ROOT)/lib
 # 	@echo "Start"
 
 LibLog.a: LibLog.o
-	$(AR) $(ARFLAGS) LibLog.a LibLog.o
+	$(AR) $(ARFLAGS) libLog.a LibLog.o
 	@echo "liblog.a create"
+
+ld: LibLog.o
+	$(CC) $(SO_FLAGS) LibLog.o -o libLog.so
+	@echo "LD create"
 
 LibLog.o: LibLog.c
 	$(CC) $(CFLAGS) -c LibLog.c -o LibLog.o
@@ -25,9 +29,14 @@ clean:
 	rm -f *.o *.a
 
 install:
-	cp LibLog.a $(LIB_DIR)
+	cp libLog.a $(LIB_DIR)
 	cp LibLog.h $(INC_DIR)
 	@echo "Install completed"
+
+install_ld:
+	cp libLog.so $(LIB_DIR)
+	cp LibLog.h $(INC_DIR)
+	@echo "LD Install Completed"
 
 overview:
 	@echo $(INC_DIR)

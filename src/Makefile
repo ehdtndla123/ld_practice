@@ -1,4 +1,5 @@
 CC=gcc
+CC_FLAGS = -m64 -g -fPIC
 
 PROJECT_ROOT = C:/Project/ld_practice
 LIBSRC_DIR = $(PROJECT_ROOT)/libsrc
@@ -7,7 +8,8 @@ LIB_DIR = $(PROJECT_ROOT)/lib
 
 
 main: main.c
-	$(CC) -I$(INC_DIR) main.c -L$(LIB_DIR) -lLog -o main
+	$(CC) $(CC_FLAGS) -I$(INC_DIR) main.c $(LIB_DIR)/libLog.so -o main
+# 	$(CC) $(CC_FLAGS) -I$(INC_DIR) main.c -L$(LIB_DIR) -lLog -o main
 
 clean:
 	@echo "Clean"
