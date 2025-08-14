@@ -21,7 +21,7 @@ ld: LibLog.o
 	@echo "LD create"
 
 LibLog.o: LibLog.c
-	$(CC) $(CFLAGS) -c LibLog.c -o LibLog.o
+	$(CC) $(CC_FLAGS) -c LibLog.c -o LibLog.o
 	@echo "Compile"
 
 clean:
